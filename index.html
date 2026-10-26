@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language, Culture, and Identity in Flux</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Mongolian&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              canvas: "#F7F6F2",
+              surface: "#FFFFFF",
+              charcoal: "#1A1A1A",
+              muted: "#666666",
+              subtle: "#E5E3DC",
+              accent: "#C0392B",
+              accentSoft: "#FADBD8",
+            },
+            fontFamily: {
+              sans: [
+                "Inter",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "sans-serif",
+              ],
+              bichig: ['"Noto Sans Mongolian"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #f7f6f2;
+        color: #1a1a1a;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Vertical Mongolian Script Rendering */
+      .bichig-text {
+        font-family: "Noto Sans Mongolian", sans-serif;
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+        font-size: 2.25rem;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+      }
+
+      /* Slide Deck Layout */
+      .slide-deck {
+        position: relative;
+        width: 100%;
+        min-height: 480px;
+      }
+
+      .slide-card {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(16px) scale(0.99);
+        transition:
+          opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          visibility 0.4s;
+        pointer-events: none;
+      }
+
+      .slide-card.active-slide {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body
+    class="h-full flex flex-col justify-between selection:bg-accent selection:text-white antialiased"
+  >
+    <header
+      class="max-w-5xl w-full mx-auto px-6 pt-6 sm:pt-8 flex items-center justify-between z-20"
+    >
+      <div class="flex items-center space-x-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-accent inline-block"></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-muted"
+          >Team 2 Presentation</span
+        >
+      </div>
+
+      <!-- Slide Indicators / Dots -->
+      <div class="flex items-center space-x-2" id="slide-dots">
+        <button
+          onclick="goToSlide(1)"
+          class="dot w-2.5 h-2.5 rounded-full bg-charcoal transition-all duration-300"
+          title="Slide 1"
+        ></button>
+        <button
+          onclick="goToSlide(2)"
+          class="dot w-2.5 h-2.5 rounded-full bg-subtle transition-all duration-300"
+          title="Slide 2"
+        ></button>
+        <button
+          onclick="goToSlide(3)"
+          class="dot w-2.5 h-2.5 rounded-full bg-subtle transition-all duration-300"
+          title="Slide 3"
+        ></button>
+        <button
+          onclick="goToSlide(4)"
+          class="dot w-2.5 h-2.5 rounded-full bg-subtle transition-all duration-300"
+          title="Slide 4"
+        ></button>
+        <button
+          onclick="goToSlide(5)"
+          class="dot w-2.5 h-2.5 rounded-full bg-subtle transition-all duration-300"
+          title="Slide 5"
+        ></button>
+        <button
+          onclick="goToSlide(6)"
+          class="dot w-2.5 h-2.5 rounded-full bg-subtle transition-all duration-300"
+          title="Slide 6"
+        ></button>
+      </div>
+    </header>
+
+    <!-- Main Content Deck Area -->
+    <main
+      class="flex-1 max-w-4xl w-full mx-auto px-6 py-8 flex items-center justify-center my-auto z-10"
+    >
+      <div class="slide-deck">
+        <!-- SLIDE 1: Title Slide -->
+        <section class="slide-card active-slide" id="slide-1">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 md:p-16 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <span
+                class="inline-block text-xs font-medium uppercase tracking-widest text-accent bg-accentSoft/50 px-3 py-1 rounded-full mb-6"
+              >
+                Focus Area: Historical Shifts Ideologies & Language Revivals
+              </span>
+              <h1
+                class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-charcoal leading-[1.15] mb-6"
+              >
+                Language Culture & Identity in Flux
+              </h1>
+              <p
+                class="text-base sm:text-lg text-muted max-w-2xl font-normal leading-relaxed"
+              >
+                A modern examination of Mongolias Word Comparison and
+                transformations from mid-20th century literacy policies to
+                todays dualscript heritage revival.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 2: Bullet Point 1 -->
+        <section class="slide-card" id="slide-2">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 md:p-16 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span
+                  class="text-xs font-semibold text-accent uppercase tracking-widest"
+                  >Key Point 01</span
+                >
+                <span class="text-xs text-muted">Historical Context</span>
+              </div>
+
+              <h2
+                class="text-2xl sm:text-4xl font-bold text-charcoal mb-6 leading-tight"
+              >
+                The Soviet Legacy
+              </h2>
+              <p
+                class="text-lg sm:text-2xl font-light text-charcoal/90 leading-relaxed max-w-2xl"
+              >
+                Decades of Soviet alignment before 1990 established highly
+                disciplined,
+                <strong class="font-semibold text-charcoal"
+                  >near-universal literacy</strong
+                >
+                across the country.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SLIDE 3: Bullet Point 2 -->
+        <section class="slide-card" id="slide-3">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 md:p-16 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span
+                  class="text-xs font-semibold text-accent uppercase tracking-widest"
+                  >Key Point 02</span
+                >
+                <span class="text-xs text-muted">Alphabet Shift</span>
+              </div>
+
+              <h2
+                class="text-2xl sm:text-4xl font-bold text-charcoal mb-6 leading-tight"
+              >
+                The Alphabet Transition
+              </h2>
+              <p
+                class="text-lg sm:text-2xl font-light text-charcoal/90 leading-relaxed max-w-2xl"
+              >
+                The traditional script was replaced by the
+                <strong class="font-semibold text-charcoal"
+                  >Cyrillic alphabet</strong
+                >
+                in the 1940s for daily public use and schooling.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide-card" id="slide-4">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span
+                  class="text-xs font-semibold text-accent uppercase tracking-widest"
+                  >Visual Comparison</span
+                >
+                <span class="text-xs text-muted"
+                  >Cyrillic vs Traditional Script</span
+                >
+              </div>
+
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch my-2"
+              >
+                <!-- Cyrillic Card -->
+                <div
+                  class="p-6 rounded-xl bg-canvas border border-subtle flex flex-col justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[11px] font-semibold text-muted uppercase tracking-wider block mb-1"
+                      >Standard Cyrillic</span
+                    >
+                    <p class="text-xs text-muted">Horizontal (Left to Right)</p>
+                  </div>
+                  <div class="py-8 text-center">
+                    <span
+                      id="cyrillic-display"
+                      class="text-3xl sm:text-4xl font-bold text-charcoal tracking-wide"
+                      >Монгол</span
+                    >
+                  </div>
+                  <p class="text-xs text-muted border-t border-subtle/80 pt-3">
+                    Daily written and printed standard since the 1940s.
+                  </p>
+                </div>
+
+                <div
+                  class="p-6 rounded-xl bg-canvas border border-subtle flex flex-col justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[11px] font-semibold text-accent uppercase tracking-wider block mb-1"
+                      >Traditional Script (Bichig)</span
+                    >
+                    <p class="text-xs text-muted">Vertical (Top to Bottom)</p>
+                  </div>
+                  <div
+                    class="py-4 text-center flex items-center justify-center min-h-[120px]"
+                  >
+                    <span id="bichig-display" class="bichig-text text-accent"
+                      >ᠮᠣᠩᠭᠣᠯ</span
+                    >
+                  </div>
+                  <p class="text-xs text-muted border-t border-subtle/80 pt-3">
+                    Centuries-old script currently undergoing national revival.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-center space-x-2">
+                <span class="text-xs text-muted mr-2">Sample words:</span>
+                <button
+                  onclick="setScriptWord('mongol')"
+                  id="btn-mongol"
+                  class="px-3 py-1 text-xs rounded-full bg-charcoal text-white font-medium transition"
+                >
+                  Mongol
+                </button>
+                <button
+                  onclick="setScriptWord('culture')"
+                  id="btn-culture"
+                  class="px-3 py-1 text-xs rounded-full bg-canvas text-charcoal hover:bg-subtle font-medium transition"
+                >
+                  Culture
+                </button>
+                <button
+                  onclick="setScriptWord('script')"
+                  id="btn-script"
+                  class="px-3 py-1 text-xs rounded-full bg-canvas text-charcoal hover:bg-subtle font-medium transition"
+                >
+                  Script
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide-card" id="slide-5">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 md:p-16 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span
+                  class="text-xs font-semibold text-accent uppercase tracking-widest"
+                  >Key Point 03</span
+                >
+                <span class="text-xs text-muted">Contemporary Reform</span>
+              </div>
+
+              <h2
+                class="text-2xl sm:text-4xl font-bold text-charcoal mb-6 leading-tight"
+              >
+                The Script Revival
+              </h2>
+              <p
+                class="text-lg sm:text-2xl font-light text-charcoal/90 leading-relaxed max-w-2xl"
+              >
+                Massive contemporary education reforms mandating a
+                <strong class="font-semibold text-charcoal"
+                  >dual-script curriculum</strong
+                >
+                across schools and public governance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide-card" id="slide-6">
+          <div
+            class="bg-surface rounded-2xl p-8 sm:p-12 md:p-16 border border-subtle shadow-sm flex flex-col justify-between min-h-[440px]"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span
+                  class="text-xs font-semibold text-accent uppercase tracking-widest"
+                  >Key Point 04</span
+                >
+              </div>
+
+              <h2
+                class="text-2xl sm:text-4xl font-bold text-charcoal mb-6 leading-tight"
+              >
+                Importance of not forgetting our Culture
+              </h2>
+              <p
+                class="text-lg sm:text-2xl font-light text-charcoal/90 leading-relaxed max-w-2xl"
+              >
+                Today, students learn to write top-to-bottom
+                <strong class="font-semibold text-charcoal"
+                  >so they remember their history</strong
+                >
+                and culture.
+              </p>
+            </div>
+
+            <div
+              class="pt-8 border-t border-subtle/60 flex items-center justify-between text-xs text-muted"
+            >
+              <button
+                onclick="goToSlide(1)"
+                class="text-charcoal font-semibold hover:text-accent transition"
+              >
+                Restart &circlearrowright;
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Controls -->
+    <footer
+      class="max-w-5xl w-full mx-auto px-6 pb-6 sm:pb-8 flex items-center justify-between z-20"
+    >
+      <!-- Slide Counter -->
+      <div class="text-sm font-mono text-muted">
+        <span id="counter-current" class="text-charcoal font-bold">01</span> /
+        <span id="counter-total">06</span>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="flex items-center space-x-3">
+        <button
+          id="btn-prev"
+          onclick="prevSlide()"
+          class="px-4 py-2 rounded-lg border border-subtle bg-surface hover:bg-canvas text-charcoal text-xs font-semibold transition disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          &larr; Previous
+        </button>
+        <button
+          id="btn-next"
+          onclick="nextSlide()"
+          class="px-5 py-2 rounded-lg bg-charcoal hover:bg-black text-white text-xs font-semibold transition disabled:opacity-30 disabled:cursor-not-allowed shadow-sm"
+        >
+          Next &rarr;
+        </button>
+      </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 6;
+
+      const words = {
+        mongol: { cyrillic: "Монгол", bichig: "ᠮᠣᠩᠭᠣᠯ" },
+        culture: { cyrillic: "Соёл", bichig: "ᠰᠣᠶᠣᠯ" },
+        script: { cyrillic: "Бичиг", bichig: "ᠪᠢᠴᠢᠭ" },
+      };
+
+      function updateDeck() {
+        // Toggle active slide
+        document.querySelectorAll(".slide-card").forEach((slide, index) => {
+          if (index + 1 === currentSlide) {
+            slide.classList.add("active-slide");
+          } else {
+            slide.classList.remove("active-slide");
+          }
+        });
+
+        // Update counters
+        document.getElementById("counter-current").innerText = String(
+          currentSlide,
+        ).padStart(2, "0");
+        document.getElementById("counter-total").innerText = String(
+          totalSlides,
+        ).padStart(2, "0");
+
+        // Update dots
+        document.querySelectorAll("#slide-dots .dot").forEach((dot, index) => {
+          if (index + 1 === currentSlide) {
+            dot.className =
+              "dot w-6 h-2.5 rounded-full bg-charcoal transition-all duration-300";
+          } else {
+            dot.className =
+              "dot w-2.5 h-2.5 rounded-full bg-subtle hover:bg-muted transition-all duration-300";
+          }
+        });
+
+        // Update button states
+        document.getElementById("btn-prev").disabled = currentSlide === 1;
+        document.getElementById("btn-next").disabled =
+          currentSlide === totalSlides;
+      }
+
+      function goToSlide(n) {
+        if (n >= 1 && n <= totalSlides) {
+          currentSlide = n;
+          updateDeck();
+        }
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          currentSlide++;
+          updateDeck();
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          currentSlide--;
+          updateDeck();
+        }
+      }
+
+      function setScriptWord(key) {
+        const data = words[key];
+        if (!data) return;
+
+        document.getElementById("cyrillic-display").innerText = data.cyrillic;
+        document.getElementById("bichig-display").innerText = data.bichig;
+
+        ["mongol", "culture", "script"].forEach((k) => {
+          const btn = document.getElementById(`btn-${k}`);
+          if (k === key) {
+            btn.className =
+              "px-3 py-1 text-xs rounded-full bg-charcoal text-white font-medium transition";
+          } else {
+            btn.className =
+              "px-3 py-1 text-xs rounded-full bg-canvas text-charcoal hover:bg-subtle font-medium transition";
+          }
+        });
+      }
+
+      // Keyboard Arrow Controls
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === " ") nextSlide();
+        if (e.key === "ArrowLeft") prevSlide();
+      });
+
+      // Initialize state
+      window.onload = function () {
+        updateDeck();
+      };
+    </script>
+  </body>
+</html>
